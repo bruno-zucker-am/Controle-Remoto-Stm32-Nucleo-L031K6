@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "author": "Bruno Zucker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 6.6, "left": 118, "attrs": {} },
+    {
+      "type": "board-st-nucleo-l031k6",
+      "id": "nucleo",
+      "top": 10.81,
+      "left": -63.65,
+      "attrs": {}
+    },
+    { "type": "wokwi-ir-receiver", "id": "ir1", "top": -78.15, "left": 7.82, "attrs": {} },
+    { "type": "wokwi-ir-remote", "id": "remote1", "top": -86.4, "left": 460.8, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -15.25,
+      "left": 345.6,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -109.2,
+      "left": 407.4,
+      "attrs": { "color": "red", "flip": "1" }
+    }
+  ],
+  "connections": [
+    [ "$serialMonitor:TX", "nucleo:VCP_RX", "", [] ],
+    [ "$serialMonitor:RX", "nucleo:VCP_TX", "", [] ],
+    [ "nucleo:GND.1", "bb1:bn.1", "black", [ "h-19.2", "v153.6", "h220.8" ] ],
+    [ "nucleo:5V", "bb1:bp.1", "red", [ "h85.8", "v115.2" ] ],
+    [ "ir1:GND", "bb1:bn.2", "black", [ "v211.2", "h9.6" ] ],
+    [ "ir1:VCC", "bb1:bp.2", "red", [ "v19.2", "h38.4", "v-38.4", "h48" ] ],
+    [ "ir1:DAT", "nucleo:A0", "yellow", [ "v0" ] ],
+    [ "led1:A", "r1:2", "white", [ "v0" ] ],
+    [ "led1:C", "bb1:bn.4", "black", [ "v307.2", "h-259.6" ] ],
+    [ "r1:1", "nucleo:A1", "white", [ "v9.6", "h-240", "v144" ] ]
+  ],
+  "dependencies": {}
+}
